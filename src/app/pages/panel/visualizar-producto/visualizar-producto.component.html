@@ -1,0 +1,24 @@
+<h2 class="text-center mt-3">Productos disponibles</h2>
+<h4 *ngIf="this.products.length === 0" class="text-center mt-5">No hay productos disponibles</h4>
+<table class="table table-striped" *ngIf="this.products.length > 0" >
+  <thead>
+    <tr>
+      <th scope="col">Imagen</th>
+      <th scope="col">Producto</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Categoría</th>
+      <th scope="col">Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products" >
+      <td><img [src]="product._id | image" alt="" width="100px"></td>
+      <td>{{product.title}}</td>
+      <td>{{product.stock}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.category.title}}</td>
+      <td>{{product.price}}</td>
+    </tr>
+  </tbody>
+</table>

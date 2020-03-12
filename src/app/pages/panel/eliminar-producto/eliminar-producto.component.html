@@ -1,0 +1,13 @@
+<h2 class="text-center mt-3">Eliminar productos</h2>
+<h4 *ngIf="this.products.length === 0" class="text-center mt-5">No hay productos disponibles</h4>
+
+<form class="mt-3" *ngIf="this.products.length > 0">
+  <div class="form-group">
+    <label for="product">Selecciona un producto</label>
+    <select class="form-control" name="product" id="product" [(ngModel)]="idRemove">
+      <option value="" disabled>Producto a eliminar</option>
+      <option *ngFor="let product of products" [value]="product._id">{{product.title}}-{{product.price | currency:'MXN'}}</option>
+    </select>
+  </div>
+  <button class="btn btn-danger btn-block" type="click" (click)="remove()" [disabled]="idRemove === ''">Eliminar</button>
+</form>

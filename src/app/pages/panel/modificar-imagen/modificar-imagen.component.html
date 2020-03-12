@@ -1,0 +1,19 @@
+<h2 class="text-center mt-3">Modificar Imagen producto</h2>
+<h4 *ngIf="this.products.length === 0" class="text-center mt-5">No hay productos disponibles</h4>
+<!-- Selccion de producto -->
+<div class="form-group" *ngIf="this.products.length > 0">
+  <select class="form-control" name="productMod" id="productMod" [(ngModel)]="idMod">
+    <option value="" disabled>Selecciona un producto</option>
+    <option *ngFor="let product of products" [value]="product._id">{{product.title}}</option>
+  </select>
+</div>
+
+<img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
+
+<input (change)="seleccionImage($event.target.files[0])" type="file">
+
+<div>
+  <button (click)="subirImagen()" [disabled]="!imagenTemp" type="button" class="btn btn-primary">Subir imagen</button>
+</div>
+
+<!-- Subir imagen -->

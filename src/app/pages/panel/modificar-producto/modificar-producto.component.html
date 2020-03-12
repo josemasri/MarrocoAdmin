@@ -1,0 +1,36 @@
+<h2 class="text-center mt-3">Modificar producto</h2>
+<h4 *ngIf="this.products.length === 0" class="text-center mt-5">No hay productos disponibles</h4>
+<!-- Selccion de producto -->
+<div class="form-group" *ngIf="this.products.length > 0">
+  <select class="form-control" name="productMod" id="productMod" [(ngModel)]="idMod" (change)="fillProductFields()">
+    <option value="" disabled>Selecciona un producto</option>
+    <option *ngFor="let product of products" [value]="product._id">{{product.title}}</option>
+  </select>
+</div>
+
+<form *ngIf="idMod != ''" >
+  <div class="form-group">
+    <label for="">Título</label>
+    <input type="text" class="form-control" name="title" [(ngModel)]="productMod.title">
+  </div>
+  <div class="form-group">
+    <label for="">Precio</label>
+    <input type="number" class="form-control" name="price" [(ngModel)]="productMod.price">
+  </div>
+  <div class="form-group">
+    <label for="">Stock</label>
+    <input type="number" class="form-control" name="stock" [(ngModel)]="productMod.stock">
+  </div>
+  <div class="form-group">
+    <label for="">Descripcion</label>
+    <textarea type="text" class="form-control" name="description" [(ngModel)]="productMod.description"> </textarea>
+  </div>
+  <div class="form-group"><label for="">Categoria</label>
+    <select class="form-control" name="category" [(ngModel)]="productMod.category">
+      <option disabled default value="">Elige una categoría</option>
+      <option *ngFor="let category of categories" [value]="category._id">
+        {{category.title}}</option>
+    </select>
+  </div>
+  <button type="button" class="btn btn-success btn-block" (click)="modifyProduct()">Modificar</button>
+</form>
